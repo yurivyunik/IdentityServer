@@ -24,10 +24,10 @@ namespace Client
             var tokenResponse = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
             {
                 Address = disco.TokenEndpoint,
-                ClientId = "client",
+                ClientId = "CheckOutApi",
                 ClientSecret = "secret",
 
-                Scope = "api1"
+                Scope = "baseScope"
             });
 
             if (tokenResponse.IsError)
@@ -43,7 +43,7 @@ namespace Client
             var apiClient = new HttpClient();
             apiClient.SetBearerToken(tokenResponse.AccessToken);
 
-            var response = await apiClient.GetAsync("https://localhost:6001/identity");
+            var response = await apiClient.GetAsync("https://localhost:6001/customer");
             if (!response.IsSuccessStatusCode)
             {
                 Console.WriteLine(response.StatusCode);
@@ -51,7 +51,7 @@ namespace Client
             else
             {
                 var content = await response.Content.ReadAsStringAsync();
-                Console.WriteLine(JArray.Parse(content));
+                Console.WriteLine(content);
             }
         }
     }

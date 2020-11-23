@@ -6,7 +6,7 @@ namespace OmsApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    [Authorize()]
+    [Authorize(Policy = "BasePolicy")]
     public class CustomerController : ControllerBase
     {
         [HttpPost]
@@ -20,7 +20,13 @@ namespace OmsApi.Controllers
         {
             return true;
         }
+    }
 
+    [ApiController]
+    [Route("customer")]
+    [Authorize(Policy = "CustomerExPolicy")]
+    public class CustomerExController : ControllerBase
+    {
         [HttpPut]
         public bool ForceCustomerRedaction(Customer customer)
         {
