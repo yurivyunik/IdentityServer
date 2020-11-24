@@ -2,7 +2,10 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
+using System.Collections.Generic;
+using IdentityServer.Quickstart;
 using IdentityServer4;
+using IdentityServer4.Models;
 using IdentityServerHost.Quickstart.UI;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -21,6 +24,7 @@ namespace IdentityServer
             var builder = services.AddIdentityServer()
                 .AddInMemoryIdentityResources(Config.IdentityResources)
                 .AddInMemoryApiScopes(Config.ApiScopes)
+                .AddExtensionGrantValidator<DelegationGrantValidator>()
                 .AddInMemoryClients(Config.Clients)
                 .AddTestUsers(TestUsers.Users);
 
@@ -34,23 +38,6 @@ namespace IdentityServer
                     options.ClientId = "<insert here>";
                     options.ClientSecret = "<insert here>";
                 });
-            //.AddOpenIdConnect("oidc", "Demo IdentityServer", options =>
-            //{
-            //    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
-            //    options.SignOutScheme = IdentityServerConstants.SignoutScheme;
-            //    options.SaveTokens = true;
-
-            //    options.Authority = "https://demo.identityserver.io/";
-            //    options.ClientId = "interactive.confidential";
-            //    options.ClientSecret = "secret";
-            //    options.ResponseType = "code";
-
-            //    options.TokenValidationParameters = new TokenValidationParameters
-            //    {
-            //        NameClaimType = "name",
-            //        RoleClaimType = "role"
-            //    };
-            //});
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

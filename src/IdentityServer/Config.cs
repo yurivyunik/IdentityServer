@@ -79,6 +79,36 @@ namespace IdentityServer
                         IdentityServerConstants.StandardScopes.Profile,
                         "baseScope"
                     }
+                },
+                new Client
+                {
+                    ClientId = "delegate.client",
+                    AllowedGrantTypes = new List<string>() { "delegation" },
+
+                    ClientSecrets =
+                    {
+                        new Secret("secret".Sha256())
+                    },
+                    AllowedScopes = { "baseScope" },
+                    Properties = new Dictionary<string, string>()
+                    {
+                        {"subject","1"}  // the user we are going to allow to be deligated.
+                    }
+                },
+                new Client
+                {
+                    ClientId = "delegate.api",
+                    AllowedGrantTypes = new List<string>() { "delegation" },
+
+                    ClientSecrets =
+                    {
+                        new Secret("secret".Sha256())
+                    },
+                    AllowedScopes = { "baseScope" },
+                    Properties = new Dictionary<string, string>()
+                    {
+                        {"subject","2"}  // the user we are going to allow to be deligated.
+                    }
                 }
             };
     }

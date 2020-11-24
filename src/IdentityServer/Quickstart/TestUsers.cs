@@ -58,6 +58,18 @@ namespace IdentityServerHost.Quickstart.UI
                             new Claim(JwtClaimTypes.WebSite, "http://bob.com"),
                             new Claim(JwtClaimTypes.Address, JsonSerializer.Serialize(address), IdentityServerConstants.ClaimValueTypes.Json)
                         }
+                    },
+                    new TestUser
+                    {
+                        SubjectId = "1",
+                        Username = "jane",
+                        Password = "password"
+                    },
+                    new TestUser
+                    {
+                        SubjectId = "2",
+                        Username = "john",
+                        Password = "password"
                     }
                 };
             }
