@@ -33,24 +33,24 @@ namespace IdentityServer
 
                     options.ClientId = "<insert here>";
                     options.ClientSecret = "<insert here>";
-                })
-                .AddOpenIdConnect("oidc", "Demo IdentityServer", options =>
-                {
-                    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
-                    options.SignOutScheme = IdentityServerConstants.SignoutScheme;
-                    options.SaveTokens = true;
-
-                    options.Authority = "https://demo.identityserver.io/";
-                    options.ClientId = "interactive.confidential";
-                    options.ClientSecret = "secret";
-                    options.ResponseType = "code";
-
-                    options.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        NameClaimType = "name",
-                        RoleClaimType = "role"
-                    };
                 });
+            //.AddOpenIdConnect("oidc", "Demo IdentityServer", options =>
+            //{
+            //    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+            //    options.SignOutScheme = IdentityServerConstants.SignoutScheme;
+            //    options.SaveTokens = true;
+
+            //    options.Authority = "https://demo.identityserver.io/";
+            //    options.ClientId = "interactive.confidential";
+            //    options.ClientSecret = "secret";
+            //    options.ResponseType = "code";
+
+            //    options.TokenValidationParameters = new TokenValidationParameters
+            //    {
+            //        NameClaimType = "name",
+            //        RoleClaimType = "role"
+            //    };
+            //});
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
