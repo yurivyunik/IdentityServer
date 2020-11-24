@@ -20,6 +20,12 @@ namespace OmsApi.Controllers
         {
             return true;
         }
+
+        [HttpGet]
+        public Customer SnapshotCustomer()
+        {
+            return new Customer();
+        }
     }
 
     [ApiController]
@@ -32,11 +38,6 @@ namespace OmsApi.Controllers
         {
             return true;
         }
-
-        [HttpGet]
-        public Customer SnapshotCustomer()
-        {
-            return new Customer();
-        }
+        
     }
 }
