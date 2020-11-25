@@ -22,7 +22,8 @@ namespace IdentityServer
             new List<ApiScope>
             {
                 new ApiScope("baseScope"),
-                new ApiScope("customerEx")
+                new ApiScope("customerEx"),
+                new ApiScope("api1"),
             };
 
         public static IEnumerable<Client> Clients =>
@@ -89,7 +90,7 @@ namespace IdentityServer
                     {
                         new Secret("secret".Sha256())
                     },
-                    AllowedScopes = { "baseScope" },
+                    AllowedScopes = { "api1" },
                     Properties = new Dictionary<string, string>()
                     {
                         {"subject","1"}  // the user we are going to allow to be deligated.
@@ -104,7 +105,7 @@ namespace IdentityServer
                     {
                         new Secret("secret".Sha256())
                     },
-                    AllowedScopes = { "baseScope" },
+                    AllowedScopes = { "api1" },
                     Properties = new Dictionary<string, string>()
                     {
                         {"subject","2"}  // the user we are going to allow to be deligated.

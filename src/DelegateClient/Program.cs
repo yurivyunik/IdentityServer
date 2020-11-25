@@ -35,7 +35,7 @@ namespace Client
             // Init the sercie account client.
             var tokenClient = new TokenClient(disco.TokenEndpoint, "delegate.client", "secret");  
             // Request a token for this user.
-            var tokenResponse = await tokenClient.RequestCustomGrantAsync("delegation", "baseScope", user);
+            var tokenResponse = await tokenClient.RequestCustomGrantAsync("delegation", "api1", user);
 
             if (tokenResponse.IsError)
             {

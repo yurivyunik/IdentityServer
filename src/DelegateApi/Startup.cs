@@ -16,7 +16,7 @@ namespace Api
                 {
                     options.Authority = "https://localhost:5001";
                     options.RequireHttpsMetadata = false;
-                    options.ApiName = "baseScope";
+                    options.ApiName = "api1";
                 });
         }
 
